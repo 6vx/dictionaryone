@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+      "resolveJsonModule": true,
+      "esModuleInterop": true  
+    },
+    "files": [
+      "wordtype.ts",
+      "cardloader.ts",
+      "dictionaryloader.ts"
+    ]
+  }

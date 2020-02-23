@@ -1,4 +1,13 @@
 "use strict";
+// for (const key in object) {
+//     if (object.hasOwnProperty(key)) {
+//         const element = object[key];
+//         const keyholder = key;
+//         newDictionary.push({
+//             keyholder : element
+//         });
+//     }
+// }
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
@@ -7,26 +16,42 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 exports.__esModule = true;
-var WORDS = __importStar(require("./data/DA.json"));
+// Object.keys(WORDS).forEach(key => {
+//     //This logs the information that goes with each word. 
+//     //console.log(WORDS[key]);
+//     //This logs the key or the word itself
+//     //console.log(key);    
+//     let colorArray = {
+//         "COLORS": {
+//         "U": 0,
+//         "B": 0,
+//         "W": 0,
+//         "G": 0,
+//         "R": 0
+//         }
+//     };
+//     let newWordData = {
+//         key : WORDS[key],
+//         colors : []
+//     };
+//     newWordData.colors.push(colorArray);
+//     let builtEntry = { key : newWordData }
+//     newDictionary.push(builtEntry);
+//     //I want to add a colorArray to this bad boy though, and rebuild the json anew with colors
+// });
+var object = __importStar(require("./data/DA.json"));
 var newDictionary = [];
-Object.keys(WORDS).forEach(function (key) {
-    //This logs the information that goes with each word. 
-    //console.log(WORDS[key]);
-    //This logs the key or the word itself
-    //console.log(key);
-    var newWordData = [];
-    var colorArray = {
-        "U": "",
-        "B": "",
-        "W": "",
-        "G": "",
-        "R": ""
+var colors = { U: 0, B: 0, W: 0, R: 0, G: 0 };
+Object.keys(object).forEach(function (key) {
+    var newEntry = {
+        id: '',
+        def: '',
+        col: colors
     };
-    newWordData.push(key);
-    newWordData.push(WORDS[key]);
-    newWordData.push(colorArray);
-    newDictionary.push(newWordData);
-    //I want to add a colorArray to this bad boy though, and rebuild the json anew with colors
+    newEntry.id = key;
+    // object[key].push(colorArray);
+    newEntry.def = (JSON.stringify(object[key]));
+    newDictionary.push(newEntry);
 });
 var fs = require('fs');
 fs.writeFile("data/newDictionary.json", JSON.stringify(newDictionary), function (err) {
@@ -34,3 +59,4 @@ fs.writeFile("data/newDictionary.json", JSON.stringify(newDictionary), function 
         console.log(err);
     }
 });
+//Ok. You've got it sorted the way you like. New script! <3

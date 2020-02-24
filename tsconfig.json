@@ -4,10 +4,7 @@
       "esModuleInterop": true  
     },
     "files": [
-      // "wordtype.ts",
-      // "cardloader.ts",
-      "dictionaryloader.ts",
-      "wordcounter.ts",
-      "dictionarycombiner.ts"
+      "targeter.ts",
+      "laser.ts"
     ]
   }

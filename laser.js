@@ -28,10 +28,17 @@ function occurrences(string, subString, allowOverlapping) {
     }
     return n;
 }
+function synonymGrabber(synoWord) {
+    var synonyms = [];
+    Object.keys(olddictionary[synoWord].SYNONYMS).forEach(function (synonym) {
+        synonyms.push(olddictionary[synoWord].SYNONYMS[synonym].toUpperCase());
+    });
+    return synonyms;
+}
 function colorChecker(samplematter) {
     var colors = { U: 0, B: 0, W: 0, R: 0, G: 0 };
     Object.keys(colors).forEach(function (color) {
-        colors[color] += occurrences(colorpool[color], samplematter, 0);
+        colors[color] += occurrences(colorpool[color], " " + samplematter + " ", 0);
     });
     return colors;
 }
@@ -46,13 +53,14 @@ var sampleEntry = olddictionary["AIR"];
 // entry.COLOR = colors;
 //console.log(olddictionary["AA"[0]].MEANINGS);
 console.log(sampleEntry);
-console.log(olddictionary["ARENA"]);
+console.log(olddictionary["ACOLYTE"]);
 //can i access based on specific criteria?
 Object.keys(olddictionary).forEach(function (word) {
     Object.keys(olddictionary[word].COLORS).forEach(function (color) {
-        if (returnPoints(word, color) !== 0) {
-            console.log(word);
-            console.log(returnPoints(word, color));
+        if (returnPoints(word, color) >= 3) {
+            console.log(word + " " + color + " " + returnPoints(word, color));
+            console.log(synonymGrabber(word));
         }
     });
 });
+console.log(olddictionary["ACOLYTE"].SYNONYMS);

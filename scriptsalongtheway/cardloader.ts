@@ -53,7 +53,7 @@ strippedCards.forEach(krill => {
 });
 
 const fs = require('fs');
-fs.writeFile("data/test.json", JSON.stringify(colorArray), function(err) {
+fs.writeFile("data/test3.json", JSON.stringify(colorArray), function(err) {
     if (err) {
         console.log(err);
     }

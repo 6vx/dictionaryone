@@ -35,6 +35,10 @@ function synonymGrabber(synoWord) {
     });
     return synonyms;
 }
+// function colorDecider(arr){
+//     let colorArray = Object.values(arr);
+//     let max = Math.max(...colorArray);
+// }
 function colorChecker(samplematter) {
     var colors = { U: 0, B: 0, W: 0, R: 0, G: 0 };
     Object.keys(colors).forEach(function (color) {
@@ -63,4 +67,6 @@ Object.keys(olddictionary).forEach(function (word) {
         }
     });
 });
-console.log(olddictionary["ACOLYTE"].SYNONYMS);
+//k you obviously understand what you're doing now
+//step back and organize your thoughts before you proceed
+//there's likely a better way to get what you want, probably using SQL

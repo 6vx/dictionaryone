@@ -5,9 +5,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 exports.__esModule = true;
 var fs_1 = __importDefault(require("fs"));
 var test_json_1 = __importDefault(require("./data/test.json"));
-//import scrabble dictionary
+var DA_json_1 = __importDefault(require("./data/DA.json"));
 var file = fs_1["default"].readFileSync('./data/collins.txt', 'utf8');
-//function to check for word matches in test.json
+var dicto = file.split(/\r\n|\r|\n/);
+var backupDicto = [];
 function colorchecker(checkingthisword) {
     var colors = { U: 0, B: 0, W: 0, R: 0, G: 0 };
     Object.keys(test_json_1["default"]).forEach(function (color) {
@@ -33,27 +34,17 @@ function occurrences(string, subString, allowOverlapping) {
     }
     return n;
 }
-//this splits my dictionary into entries based on new line
-var dicto = file.split(/\r\n|\r|\n/);
-var newDicto = [];
-Object.keys(dicto).forEach(function (word) {
-    var _a;
-    var entry = (_a = {}, _a[dicto[word]] = colorchecker(dicto[word]), _a);
-    newDicto.push(entry);
-});
-Object.keys(newDicto).forEach(function (word) {
-    if (dicto[word] == "AETHER") {
-        console.log("Found.");
-        console.log(dicto[word]);
+function printWord(word) {
+    console.log(word);
+    console.log(DA_json_1["default"][word]);
+    if (DA_json_1["default"][word] == undefined) {
+        console.log("Not colouring this?");
     }
-    if (Object.keys(newDicto[word]).toString() == "AETHER") {
-        console.log("Double found?");
-        console.log(newDicto[word]);
+    else {
+        DA_json_1["default"][word].COLORS = colorchecker(word);
+        console.log(DA_json_1["default"][word].SYNONYMS);
     }
+}
+Object.keys(dicto).forEach(function (element) {
+    printWord(dicto[element].toString());
 });
-//this proves the dictionary has been updated and my sample data is loaded
-console.log(dicto[1453]);
-console.log(newDicto[1453]);
-console.log(test_json_1["default"].U);
-console.log(Object.keys(newDicto[1453]));
-console.log(Object.keys(Object.keys(newDicto[1453])));

@@ -5,7 +5,9 @@
       "esModuleInterop": true,
     },
     "files": [
-      "datastripper.ts"
+      "targeter.ts",
+      "justwords.ts"
+
     ],
     "lib": ["ES6", "ES2018"]
 

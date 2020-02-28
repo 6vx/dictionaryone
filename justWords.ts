@@ -1,6 +1,5 @@
 import fs from 'fs';
-import colorpool from './data/test.json';
-import { prototype } from 'module';
+import colorpool from './data/alltheflave.json';
 //import scrabble dictionary
 const file = fs.readFileSync('./data/collins.txt','utf8');
 //const sqlite3 = require('sqlite3').verbose();
@@ -36,43 +35,19 @@ function occurrences(string, subString, allowOverlapping) {
 //this splits my dictionary into entries based on new line
 let dicto = file.split(/\r\n|\r|\n/);
 let newDicto = [];
-let superDicto = [];
-class Dictomain {
-    name: string;
-    colors: object;
-    definitions: object;
-    synonyms: object;
-}
-class MyClass {
-    getName() {
-      return this.constructor.name;
-    }
-  }
-Object.keys(dicto).forEach(word => {
-    let entry = new Dictomain();
-    entry.wordword = dicto[word];
-    entry.colors = colorchecker(dicto[word]);
-    superDicto.push(entry);
-});
 
 Object.keys(dicto).forEach(word => {
-    let entry = {[dicto[word]]: colorchecker(dicto[word])};
+    let entry = {[dicto[word]]: colorchecker(" " + dicto[word] + " ")};
     newDicto.push(entry);
 
 });
 
 //A whole bunch of sanity checking below. 
-Object.keys(newDicto).forEach(word => {
-    if(dicto[word] == "AETHER"){
-        console.log("Found.");
-        console.log(dicto[word]);
-    }
-    if(Object.keys(newDicto[word]).toString() == "AETHER"){
-        console.log("Double found?");
-        console.log(newDicto[word]);
+fs.writeFile("data/COLOREDCOLLINS.json", JSON.stringify(newDicto), function(err) {
+    if (err) {
+        console.log(err);
     }
 });
-
 
 
 

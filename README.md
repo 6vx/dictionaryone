@@ -1,16 +1,11 @@
-# Fussing around with some json  
+# Color Dictionary  
 
-## Project Structure
+Collins Scrabble Dictionary "colored" by Magic the Gathering's [data](https://mtgjson.com/files/all-printings/) from [MTGJSON](MTGJSON.COM).
 
-I'm hiding a graveyard full of old scripts in a folder. It's embarassing kinda.  
-I was experimenting with objects a lot and eventually felt satisfied with my kungfu enough to move on and set this stuff up with it's very own database.  
+## About
 
-## Moar
+Uses strings composed of stripped down Magic the Gathering card data as seeder data against Collin's Scrabble Dictionary word list. Uses multiple other data sources to further "saturate" word list.  
 
-I'm trying to combine two large datasets, basically. First I add a color array to my dictionary creating a new, colored dictionary.  
+## Why
 
-Second, I arrange sample text by color from Magic the Gathering JSON data, and then feed it into...
-
-Step 3: if a word is found in the MTG colored set, it gets a point of that color.
-
-Step 4: Remove outliers and perform synonym / color comparisons for maximum coloring.  
+Because I think I'll see patterns that I enjoy.  

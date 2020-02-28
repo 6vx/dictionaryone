@@ -25,7 +25,7 @@ function occurrences(string, subString, allowOverlapping) {
 
 //import both your data sets, COLORPOOL and OLDDICTIONARY
 import * as olddictionary from './data/DA.json';
-import * as colorpool from './data/test.json';
+import * as colorpool from './data/alltheflave.json';
 //shape the word exactly the way you want it abstractly
 //for Each WORD in OLDDICTIONARY, create WORDOBJECT in NEWDICTIONARY
 let newDictionary = [];
@@ -41,7 +41,7 @@ Object.keys(olddictionary).forEach(key => {
     let newEntry = { 
             id: key,
             dat: olddictionary[key],
-            col: colorchecker(key)
+            col: colorchecker(" " + key + " ")
         }
     // Object.keys(colorpool).forEach(color => {
     //     newEntry.col[color] = occurrences(colorpool[color], key, 0);
@@ -57,7 +57,7 @@ console.log(newDictionary[0].col.U);
 
 //Save file and log completion of script. 
 const fs = require('fs');
-fs.writeFile("data/newDictionary.json", JSON.stringify(newDictionary), function(err) {
+fs.writeFile("data/FLAVORDIC1.json", JSON.stringify(newDictionary), function(err) {
     if (err) {
         console.log(err);
     }

@@ -34,17 +34,40 @@ function occurrences(string, subString, allowOverlapping) {
     }
     return n;
 }
-function printWord(word) {
-    console.log(word);
-    console.log(DA_json_1["default"][word]);
-    if (DA_json_1["default"][word] == undefined) {
-        console.log("Not colouring this?");
+function printWord(WORD) {
+    var entry = {
+        WORD: WORD,
+        DATA: {
+            SYNONYMS: [],
+            ANTONYMS: [],
+            MEANINGS: {},
+            COLORS: { U: 0, B: 0, G: 0, W: 0, R: 0 }
+        }
+    };
+    if (DA_json_1["default"][WORD] != undefined) {
+        entry.DATA.SYNONYMS = DA_json_1["default"][WORD].SYNONYMS;
+        entry.DATA.ANTONYMS = DA_json_1["default"][WORD].ANTONYMS;
+        entry.DATA.MEANINGS = DA_json_1["default"][WORD].MEANINGS;
     }
-    else {
-        DA_json_1["default"][word].COLORS = colorchecker(word);
-        console.log(DA_json_1["default"][word].SYNONYMS);
-    }
+    ;
+    backupDicto.push(entry);
+    //Query Any Specific Data Here
+    // console.log(entry.DATA.COLORS.U);
 }
 Object.keys(dicto).forEach(function (element) {
-    printWord(dicto[element].toString());
+    printWord(dicto[element]);
 });
+Object.keys(backupDicto).forEach(function (element) {
+    //console.log(backupDicto[element]);
+    if (backupDicto[element].word == "AETHER") {
+        console.log("Found aether");
+    }
+});
+fs_1["default"].writeFile("data/backupDicto.json", JSON.stringify(backupDicto), function (err) {
+    if (err) {
+        console.log(err);
+    }
+});
+//K you know how to add to and remove from and move around things
+//This is now a theoretical problem more than a technical one
+//how do you want to organize your data and how do you want to add to samples

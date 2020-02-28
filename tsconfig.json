@@ -1,9 +1,12 @@
 {
-    "compilerOptions": {
+  "compileOnSave": true,  
+  "compilerOptions": {
       "resolveJsonModule": true,
-      "esModuleInterop": true  
+      "esModuleInterop": true,
     },
     "files": [
-      "classier.ts"
-    ]
+      "datastripper.ts"
+    ],
+    "lib": ["ES6", "ES2018"]
+
   }

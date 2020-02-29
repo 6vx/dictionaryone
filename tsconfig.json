@@ -5,8 +5,7 @@
       "esModuleInterop": true,
     },
     "files": [
-      "targeter.ts",
-      "justwords.ts"
+      "justObjects.ts"
 
     ],
     "lib": ["ES6", "ES2018"]

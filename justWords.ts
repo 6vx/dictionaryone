@@ -35,14 +35,11 @@ function occurrences(string, subString, allowOverlapping) {
 //this splits my dictionary into entries based on new line
 let dicto = file.split(/\r\n|\r|\n/);
 let newDicto = [];
-
 Object.keys(dicto).forEach(word => {
     let entry = {[dicto[word]]: colorchecker(" " + dicto[word] + " ")};
     newDicto.push(entry);
 
 });
-
-//A whole bunch of sanity checking below. 
 fs.writeFile("data/COLOREDCOLLINS.json", JSON.stringify(newDicto), function(err) {
     if (err) {
         console.log(err);

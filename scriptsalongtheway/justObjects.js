@@ -15,10 +15,21 @@ var COLORED = __importStar(require("./data/COLOREDCOLLINS.json"));
 var ultradicto = [];
 var colorsortarray = [];
 var saturationcount = 0;
+var wordcheckarray = [];
 Object.keys(COLORED).forEach(function (entry) {
     Object.keys(COLORED[entry]).forEach(function (word) {
         //console.log(word);//this is the actual word as a string
         ultradicto[word] = COLORED[entry][word];
+        //if (word === "VERDANT" || "DRAGON" || "GEM" || "FLAME" || "PILLAR" || "SAND" || "PURE" || "IVORY" || "CASTLE" || "KNIGHT" || "THICK" || "SWAMP" || "GLADE" || "CRYSTAL" || "LENS"){
+        if (word == "GLASS") {
+            wordcheckarray.push({ word: word, color: COLORED[entry][word] });
+        };
+        if (word == "CUP") {
+            wordcheckarray.push({ word: word, color: COLORED[entry][word] });
+        };
+        if (word == "LIQUID") {
+            wordcheckarray.push({ word: word, color: COLORED[entry][word] });
+        };
         //This pulls out a specific type of entry
         //It looks for words that are colored, and that have a dominant color among those colors
         var tempsum = 0;
@@ -27,7 +38,7 @@ Object.keys(COLORED).forEach(function (entry) {
         });
         Object.keys(COLORED[entry][word]).forEach(function (color) {
             //adjusting these numbers lets you search for more frequency or more colored wordage
-            if ((word.length >= 7) && (COLORED[entry][word][color]) >= 10 && (COLORED[entry][word][color]) >= (tempsum / 1)) {
+            if ((word.length >= 4) && (COLORED[entry][word][color]) >= 15 && (COLORED[entry][word][color]) >= (tempsum / 1)) {
                 colorsortarray.push({ word: word, color: color, amount: COLORED[entry][word][color] });
             }
         });
@@ -38,7 +49,8 @@ Object.keys(COLORED).forEach(function (entry) {
     });
 });
 console.log(colorsortarray);
-console.log("The Dictionary is " + ((saturationcount / ultradicto.length) * +"% saturated."));
+console.log("The Dictionary is " + ((saturationcount / ultradicto.length)*100 + "% saturated."));
+console.log(wordcheckarray);
 fs_1["default"].writeFile("data/COLOREDCOLLINSv2.json", JSON.stringify(ultradicto), function (err) {
     if (err) {
         console.log(err);

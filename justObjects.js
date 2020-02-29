@@ -14,6 +14,7 @@ var fs_1 = __importDefault(require("fs"));
 var COLORED = __importStar(require("./data/COLOREDCOLLINS.json"));
 var ultradicto = [];
 var colorsortarray = [];
+var saturationcount = 0;
 Object.keys(COLORED).forEach(function (entry) {
     Object.keys(COLORED[entry]).forEach(function (word) {
         //console.log(word);//this is the actual word as a string
@@ -26,13 +27,18 @@ Object.keys(COLORED).forEach(function (entry) {
         });
         Object.keys(COLORED[entry][word]).forEach(function (color) {
             //adjusting these numbers lets you search for more frequency or more colored wordage
-            if ((COLORED[entry][word].length >= 7) && (COLORED[entry][word][color]) >= 150 && (COLORED[entry][word][color]) >= (tempsum / 5)) {
+            if ((word.length >= 7) && (COLORED[entry][word][color]) >= 10 && (COLORED[entry][word][color]) >= (tempsum / 1)) {
                 colorsortarray.push({ word: word, color: color, amount: COLORED[entry][word][color] });
             }
         });
+        if (tempsum > 0) {
+            saturationcount += 1;
+        }
+        ;
     });
 });
 console.log(colorsortarray);
+console.log("The Dictionary is " + ((saturationcount / ultradicto.length) * +"% saturated."));
 fs_1["default"].writeFile("data/COLOREDCOLLINSv2.json", JSON.stringify(ultradicto), function (err) {
     if (err) {
         console.log(err);

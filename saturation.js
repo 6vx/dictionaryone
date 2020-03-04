@@ -12,29 +12,36 @@ var __importStar = (this && this.__importStar) || function (mod) {
 exports.__esModule = true;
 var fs_1 = __importDefault(require("fs"));
 var COLORED = __importStar(require("./data/COLOREDCOLLINSv2.json"));
-// import * as WORDDATA from './data/DA.json';
-var saturated = [];
+//import * as WORDDATA from './data/DA.json';
+//let coloredsample = [];
 // console.log(WORDDATA["AA"].SYNONYMS);
 // Object.keys(WORDDATA).forEach(word => {
 //     if(WORDDATA[word].SYNONYMS != undefined){
 //         console.log(word + " " + WORDDATA[word].SYNONYMS);
 //     }
 // });
-Object.keys(COLORED).forEach(function (entry) {
-    var tempsum = 0;
-    Object.keys(COLORED[entry]).forEach(function (word) {
-        //console.log(word);//this is the actual word as a string
-        Object.keys(COLORED[entry][word]).forEach(function (color) {
-            tempsum += COLORED[entry][word][color];
-        });
-        // console.log(tempsum);
-        if (tempsum >= 1) {
-            saturated.push(word);
-        }
-        ;
-    });
+// Object.keys(COLORED).forEach(entry => {
+//     let tempsum = 0;
+//     Object.keys(COLORED[entry]).forEach(word => {
+//         //console.log(word);//this is the actual word as a string
+//         Object.keys(COLORED[entry][word]).forEach(color => {
+//             tempsum += COLORED[entry][word][color];
+//         });
+//         // console.log(tempsum);
+//         if (tempsum >= 1){
+//             saturated.push(word);
+//         };
+//     });
+// });
+var array = [];
+array.push(COLORED);
+var reformattedArray = array.map(function (obj) {
+    var rObj = {};
+    rObj[obj.key] = obj.value;
+    return rObj;
 });
-fs_1["default"].writeFile("data/saturated.json", JSON.stringify(saturated), function (err) {
+console.log(reformattedArray);
+fs_1["default"].writeFile("data/reformattedcollins.json", JSON.stringify(reformattedArray), function (err) {
     if (err) {
         console.log(err);
     }

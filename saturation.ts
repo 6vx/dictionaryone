@@ -1,6 +1,7 @@
 import fs from 'fs';
 import * as SAMPS from './data/samplecollins.json';
 import * as WORDDATA from './data/DA.json';
+import { occurrences } from './timsfunctions';
 
 let reformattedArray = [];
 
@@ -11,17 +12,17 @@ Object.keys(SAMPS).forEach(element => {
             console.log(word);
             // console.log(WORDDATA[word].SYNONYMS);
             WORDDATA[word].SYNONYMS.forEach(synonym => {
-                console.log(synonym);
+                console.log(synonym.toUpperCase());
+                console.log(occurrences(synonym.toUpperCase(), word, true));
             });
         }
     });
     
 });
 
-// console.log(Object.keys(WORDDATA["AA"]));
-
 fs.writeFile("data/synonympopper.json", JSON.stringify(reformattedArray), function(err) {
     if (err) {
         console.log(err);
     }
 });
+

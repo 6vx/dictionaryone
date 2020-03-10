@@ -13,20 +13,21 @@ exports.__esModule = true;
 var fs_1 = __importDefault(require("fs"));
 var SAMPS = __importStar(require("./data/samplecollins.json"));
 var WORDDATA = __importStar(require("./data/DA.json"));
+var timsfunctions_1 = require("./timsfunctions");
 var reformattedArray = [];
 Object.keys(SAMPS).forEach(function (element) {
     Object.keys(SAMPS[element]).forEach(function (word) {
         // console.log(word);
         if (WORDDATA[word] != undefined) {
             console.log(word);
-            console.log(WORDDATA[word].SYNONYMS);
+            // console.log(WORDDATA[word].SYNONYMS);
             WORDDATA[word].SYNONYMS.forEach(function (synonym) {
-                console.log(synonym);
+                console.log(synonym.toUpperCase());
+                console.log(timsfunctions_1.occurrences(synonym.toUpperCase(), word, true));
             });
         }
     });
 });
-// console.log(Object.keys(WORDDATA["AA"]));
 fs_1["default"].writeFile("data/synonympopper.json", JSON.stringify(reformattedArray), function (err) {
     if (err) {
         console.log(err);

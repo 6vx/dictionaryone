@@ -5,11 +5,7 @@
       "esModuleInterop": true,
     },
     "files": [
-      "saturation.ts",
-      "timsfunctions.ts",
-      "striptwos.ts",
-      "stripthrees.ts"
-
+      "timsfunctions.ts"
     ],
     "lib": ["ES6", "ES2018"]
 

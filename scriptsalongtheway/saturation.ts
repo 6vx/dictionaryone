@@ -1,7 +1,7 @@
 import fs from 'fs';
 import * as SAMPS from './data/samplecollins.json';
 import * as WORDDATA from './data/DA.json';
-import { occurrences } from './timsfunctions';
+import { occurrences } from '../timsfunctions';
 
 let reformattedArray = [];
 

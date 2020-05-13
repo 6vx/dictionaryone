@@ -1,11 +1,15 @@
 {
   "compileOnSave": true,  
   "compilerOptions": {
+      //"resolveJsonModule": true,
       "resolveJsonModule": true,
-      "esModuleInterop": true,
+      "esModuleInterop": true
     },
     "files": [
-      "timsfunctions.ts"
+      "timsfunctions.ts",
+      "datastripper.ts",
+      "justWords.ts",
+      "flaves.ts"
     ],
     "lib": ["ES6", "ES2018"]
 
